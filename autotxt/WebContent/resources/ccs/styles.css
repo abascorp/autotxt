@@ -1,0 +1,82 @@
+/*
+    Document   : styles
+    Created on : 12/04/2009, 09:01:08 PM
+    Author     : Andres
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/*
+   Para Tablas detalle de datos
+*/
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #003062;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+
+/********************Tabla del login********************************+*/
+
+#autotext{
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 3%
+}
+
+#msj{
+    position: relative;
+    display: block;
+    float: left;
+    width: 99%;
+    text-align: center;
+    white-space: nowrap;
+    padding-top: 3px;
+    height: 0.001em
+}
+
+
+.error{
+    background: url(../img/error.gif) 10px no-repeat ;
+    font-size: 9pt;
+    padding-left: 40px;
+    padding-right: 30px;
+    height: 25px;
+    padding-top: 9px;
+    color: red;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: #F5DCDC;
+    display: inline-block; /* Tratamiento extra para internet explorer  */
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px; 
+    border:1px solid red; 
+    margin-top: 3px;
+}
+
+
+.exito{
+    background: url(../img/exito.gif) 10px no-repeat ;
+    font-size: 9pt;
+    padding-left: 40px;
+    padding-right: 30px;
+    height: 25px;
+    padding-top: 9px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: #FBF988;
+    display: inline-block; /* Tratamiento extra para internet explorer  */
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px; 
+    border:1px solid #9E9867;
+    margin-top: 3px;
+}

@@ -1,0 +1,42 @@
+SELECT 
+''''||TRA.CODCIA
+||''','''||TRA.DESCIA
+||''','''||TRA.TIPNOM
+||''','''||TRA.DESNOM
+||''','''||TRIM(TRA.FICTRA)
+||''','''||TRIM(TRA.CEDULA)
+||''','''||TO_CHAR(TRA.FECING, 'DD/MM/YYYY')
+||''','''||TRA.APELLIDO1
+||''','''||TRA.APELLIDO2
+||''','''||TRA.NOMBRE1
+||''','''||TRA.NOMBRE2
+||''','''||TRA.CODCAR
+||''','''||TRA.DESCAR
+||''','''||TRA.LOCALIDAD
+||''','''||LOC.DESLO1
+||''','''||TRA.CODSUC
+||''','''||TRA.DESSUC
+||''','''||'01'||''','''||'UNICA'
+||''','''||TRA.CODDEP
+||''','''||TRA.DESDEP
+||''','''||TRIM(TO_CHAR(TRA.SUELD1*30,'99999999.99'))
+||''','''||TO_CHAR(ABO.FECABO,'YYYY')
+||''','''||DECODE(TO_CHAR(ABO.FECABO,'MM'),'01','1',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'02','2',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'03','3',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'04','4',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'05','5',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'06','6',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'07','7',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'08','8',
+           DECODE(TO_CHAR(ABO.FECABO,'MM'),'09','9',
+           TO_CHAR(ABO.FECABO,'MM'))))))))))
+||''','''||TO_CHAR(ABO.FECABO,'DD/MM/YYYY')
+||''','''||ABO.CTO_CODCTO
+||''','''||CTO.DESCTO
+||''','''||TRIM(TO_CHAR(ABO.CANTID,'99999999.99'))
+||''','''||TRIM(TO_CHAR(ABO.MONABO,'99999999.99'))
+||''','''||TRIM(TO_CHAR(ANT.SALDO,'99999999.99'))
+||''','''||TRIM(TO_CHAR((CAB.CAPBRU-ANT.SALDO)*0.75,'99999999.99'))
+||'''' 
+FROM NMM036 ABO 

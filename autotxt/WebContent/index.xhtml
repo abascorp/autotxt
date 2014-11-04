@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- 
+     Copyright (C) 2011  ANDRES DOMINGUEZ, CHRISTIAN DÍAZ
+
+    Este programa es software libre: usted puede redistribuirlo y/o modificarlo 
+    bajo los términos de la Licencia Pública General GNU publicada 
+    por la Fundación para el Software Libre, ya sea la versión 3 
+    de la Licencia, o (a su elección) cualquier versión posterior.
+
+    Este programa se distribuye con la esperanza de que sea útil, pero 
+    SIN GARANTÍA ALGUNA; ni siquiera la garantía implícita 
+    MERCANTIL o de APTITUD PARA UN PROPÓSITO DETERMINADO. 
+    Consulte los detalles de la Licencia Pública General GNU para obtener 
+    una información más detallada. 
+
+    Debería haber recibido una copia de la Licencia Pública General GNU 
+    junto a este programa. 
+    En caso contrario, consulte <http://www.gnu.org/licenses/>.
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!-- Estilos -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="shortcut icon" href="javax.faces.resource/img/favicon.ico" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/ccs/styles.css" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/ccs/opennomina/skin.css" />
+	<script src="javax.faces.resource/js/index.js" type="text/javascript"></script>
+
+	<title>OPEN NOMINA - AUTOSERVICIO</title>
+</h:head>
+<h:body style="background-color: #ffffff">
+	<f:view>
+		<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+			<f:facet name="start">
+				<h:graphicImage value="javax.faces.resource/img/loader.gif"
+					style="height:30px" />
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+		<h:form id="formGentxt">
+		<div id="msj"><span id="jsmsj"/>
+				<h:outputText styleClass="#{controller.claseResult}" id="mensaje"
+					value="#{controller.msj}" />	
+			</div>
+			<div id="autotext">
+				<div id="upload" style="display: none;">
+					<p:fileUpload fileUploadListener="#{controller.handleFileUpload}"
+						id="upload" mode="advanced" update="mensaje" multiple="false"
+						cancelLabel="Cancelar" label="Selección" uploadLabel="Subir">
+					</p:fileUpload>
+				</div><br/>
+				<p:panel id="panel"
+					header="Generador de txt para autoservicio Open Nomina"
+					toggleable="true">
+	
+					<h:panelGrid columns="2" cellpadding="5">
+					    					
+						<h:outputText value="Compañia: *" />
+						<h:selectOneMenu value="#{controller.codcia}">
+							<f:selectItem itemLabel="06-WIX FILTRATION CORP." itemValue="06" />
+							<f:selectItem itemLabel="WX-WIXCD" itemValue="WX" />
+						</h:selectOneMenu>
+						
+						<h:outputText value="Frecuencia: *" />
+						<h:selectOneMenu value="#{controller.procSelected}">
+							<f:selectItems value="#{controller.procesos}" />
+						</h:selectOneMenu>
+
+						<h:outputText value="Año: *" />
+						<p:inputText id="anio" maxlength="4" value="#{controller.anio}"
+							size="6" />
+
+						<h:outputText value="Mes: *" />
+						<p:inputText id="mes" maxlength="2" value="#{controller.mescal}"
+							size="6" />
+
+						<h:outputText value="Usuario: *" />
+						<p:inputText id="usuario" size="20" maxlength="15"
+							value="#{controller.usuario}" />
+
+						<h:outputText value="Contraseña: *" />
+						<p:password id="clave" feedback="false" size="20" maxlength="15"
+							value="#{controller.clave}" />
+					</h:panelGrid>
+				</p:panel>
+				<br />
+				<p:commandButton value="Generar TXT" title="Genera"
+					action="#{controller.writeFile}" update="mensaje, descarga" onclick="proc()" />
+				&#160;&#160;
+				<p:commandButton value="Descargar: #{controller.detalle}" title="Descarga" ajax="false" id="descarga">
+				<p:fileDownload value="#{controller.file}" />  
+				</p:commandButton>
+				&#160;&#160;
+				<p:commandButton value="Subir Usuario/SQL file" title="Subir" onclick="mostrarForm()"/>
+				&#160;&#160;
+				<p:commandButton value="Limpiar" title="Limpiar"  onclick="limpiar()" update="descarga, mensaje"  actionListener="#{controller.setDetalle('')}"/>
+						</div>
+		
+		</h:form>
+	</f:view>
+</h:body>
+</html>
